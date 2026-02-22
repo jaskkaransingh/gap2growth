@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+langchain
+langchain-community
+langchain-openai
+faiss-cpu
+python-dotenv
+gitpython
+pydantic
+openai
+tiktoken
+langchain-text-splitters
+sentence-transformers
+langchain-huggingface

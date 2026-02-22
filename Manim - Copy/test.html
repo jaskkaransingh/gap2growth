@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gap2Growth | AI Video Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: rgba(22, 27, 34, 0.8);
+      --border: #30363d;
+      --primary: #58a6ff;
+      --accent: #238636;
+      --text: #c9d1d9;
+      --text-dim: #8b949e;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 100%);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      padding: 40px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+
+    .editor-container {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 300px;
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: #7ee787;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      padding: 20px;
+      box-sizing: border-box;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button.primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    button.primary:hover {
+      background: #79c0ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+    }
+
+    button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    button.secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    #status-card {
+      display: none;
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(88, 166, 255, 0.1);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+      margin-top: 24px;
+    }
+
+    .loader {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-dim);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .video-preview {
+      margin-top: 32px;
+      display: none;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    video {
+      width: 100%;
+      display: block;
+    }
+
+    .label-text {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Gap2Growth AI</h1>
+    <p class="subtitle">Experience your career growth in high definition.</p>
+
+    <div class="editor-container">
+      <span class="label-text">INPUT DATA (JSON)</span>
+      <textarea id="json-input" spellcheck="false">{
+  "user_name": "Arjun Sharma",
+  "atsScore": 82,
+  "existingSkills": ["Python", "JavaScript", "SQL", "Git"],
+  "suggestedSkills": ["FastAPI", "Docker", "Kubernetes", "AWS"],
+  "skill_levels": {
+      "Python": 8,
+      "JavaScript": 7,
+      "AWS": 3,
+      "Docker": 2
+  },
+  "market_targets": {
+      "Python": 9,
+      "JavaScript": 9,
+      "AWS": 7,
+      "Docker": 8
+  },
+  "roadmap": [
+      "Master Docker Containers",
+      "Deploy Scalable API on AWS",
+      "Optimize Database architecture"
+  ]
+}</textarea>
+    </div>
+
+    <div class="actions">
+      <button class="primary" onclick="generate()">
+        <span>Generate Cinematic Video</span>
+      </button>
+      <button class="secondary" onclick="prettify()">
+        <span>Prettify JSON</span>
+      </button>
+    </div>
+
+    <div id="status-card">
+      <div id="status-content" style="display: flex; align-items: center; gap: 12px;">
+        <div class="loader" id="loader"></div>
+        <span id="status-text">Ready to render...</span>
+      </div>
+    </div>
+
+    <div class="video-preview" id="video-preview-container">
+      <video id="player" controls></video>
+    </div>
+  </div>
+
+  <script>
+    function prettify() {
+      const textarea = document.getElementById("json-input");
+      try {
+        const obj = JSON.parse(textarea.value);
+        textarea.value = JSON.stringify(obj, null, 2);
+      } catch (e) {
+        alert("Invalid JSON structure.");
+      }
+    }
+
+    async function generate() {
+      const textarea = document.getElementById("json-input");
+      const statusCard = document.getElementById("status-card");
+      const statusText = document.getElementById("status-text");
+      const loader = document.getElementById("loader");
+      const videoContainer = document.getElementById("video-preview-container");
+      const player = document.getElementById("player");
+
+      let payload;
+      try {
+        payload = JSON.parse(textarea.value);
+      } catch (e) {
+        alert("Please provide valid JSON.");
+        return;
+      }
+
+      statusCard.style.display = "block";
+      statusText.innerText = "Initializing AI Rendering Engine...";
+      videoContainer.style.display = "none";
+      loader.style.display = "inline-block";
+
+      try {
+        const res = await fetch("http://127.0.0.1:8000/generate-video", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (data.status === "success") {
+          statusText.innerHTML = `Success! Video generated. <a href="http://127.0.0.1:8000${data.video}" target="_blank" style="color:#58a6ff; text-decoration:none;">Open in new tab</a>`;
+          loader.style.display = "none";
+
+          player.src = `http://127.0.0.1:8000${data.video}`;
+          videoContainer.style.display = "block";
+          player.play();
+        } else {
+          statusText.innerText = "Rendering failed: " + (data.error || "Unknown error");
+          loader.style.display = "none";
+        }
+      } catch (err) {
+        console.error(err);
+        statusText.innerText = "Server connection lost. Ensure FastAPI is running.";
+        loader.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

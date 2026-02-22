@@ -1,0 +1,5 @@
+﻿src/components/animations/AnimatedBackground.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/animations/AnimatedBackground.tsx(3,56): error TS6133: 'OrbitControls' is declared but its value is never read.
+src/components/animations/AnimatedBackground.tsx(66,104): error TS2322: Type '{ radius: number; depth: number; count: number; factor: number; saturation: number; fade: true; speed: number; opacity: number; }' is not assignable to type 'IntrinsicAttributes & StarsProps & RefAttributes<Points<BufferGeometry<NormalBufferAttributes, BufferGeometryEventMap>, Material | Material[], Object3DEventMap>>'.
+  Property 'opacity' does not exist on type 'IntrinsicAttributes & StarsProps & RefAttributes<Points<BufferGeometry<NormalBufferAttributes, BufferGeometryEventMap>, Material | Material[], Object3DEventMap>>'.
+src/pages/Landing.tsx(9,1): error TS6133: 'GlassCard' is declared but its value is never read.

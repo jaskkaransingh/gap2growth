@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/yona');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-bg: #0A0F1F;
+  --color-secondary-bg: #111827;
+  --color-surface: #1E293B;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-accent-indigo: #4F46E5;
+  --color-accent-violet: #7C3AED;
+  --color-accent-blue: #3B82F6;
+
+  --color-background: var(--color-primary-bg);
+  --color-foreground: var(--color-text-primary);
+}
+
+@layer base {
+  :root {
+    --background: var(--color-primary-bg);
+    --foreground: var(--color-text-primary);
+    color-scheme: dark;
+  }
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.05] transition-all duration-700 ease-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-panel:hover {
+    @apply border-white/[0.1] bg-white/[0.05];
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
+  }
+}

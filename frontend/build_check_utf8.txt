@@ -1,0 +1,8 @@
+﻿
+> g2g@0.0.0 build
+> tsc -b && vite build
+
+src/pages/Landing.tsx(6,5): error TS6133: 'BarChart3' is declared but its value is never read.
+src/pages/Landing.tsx(6,22): error TS6133: 'ArrowRight' is declared but its value is never read.
+src/pages/Landing.tsx(114,44): error TS1117: An object literal cannot have multiple properties with the same name.
+src/pages/Landing.tsx(114,88): error TS1117: An object literal cannot have multiple properties with the same name.

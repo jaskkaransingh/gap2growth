@@ -1,0 +1,14 @@
+﻿src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/features/GrowthSummary.tsx(16,56): error TS2322: Type '{ children: Element; key: number; className: string; delay: number; }' is not assignable to type 'IntrinsicAttributes & GlassCardProps'.
+  Property 'delay' does not exist on type 'IntrinsicAttributes & GlassCardProps'.
+src/components/ui/PageTransition.tsx(18,13): error TS2322: Type '{ initial: { opacity: number; y: number; }; animate: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; exit: { opacity: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+  Property 'animate' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.

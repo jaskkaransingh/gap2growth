@@ -1,0 +1,83 @@
+﻿
+> g2g@0.0.0 build
+> tsc -b && vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 4 modules transformed.
+node.exe : 
+[31mΓ£ù[39m Build 
+failed in 51ms
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" "C:\U
+sers\ASUS\AppData\Roam
+ing\n ...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: ([31mΓ£ù[   
+ 39m Build failed     
+in 51ms:String) [    
+], RemoteExceptio    n
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+[31merror during 
+build:
+[31m[@tailwindcss/vit
+e:generate:build] 
+Cannot apply unknown 
+utility class `shadow-
+[0_8px_32px_rgba(0,`[
+31m
+file: [36mJ:/g2g/src/
+index.css[31m
+    at 
+onInvalidCandidate (fi
+le:///J:/g2g/node_modu
+les/tailwindcss/dist/c
+hunk-O3SHLFNR.mjs:21:1
+511)
+    at $e (file:///J:/
+g2g/node_modules/tailw
+indcss/dist/chunk-O3SH
+LFNR.mjs:16:36740)
+    at file:///J:/g2g/
+node_modules/tailwindc
+ss/dist/chunk-O3SHLFNR
+.mjs:21:355
+    at Ar (file:///J:/
+g2g/node_modules/tailw
+indcss/dist/chunk-O3SH
+LFNR.mjs:3:1733)
+    at I (file:///J:/g
+2g/node_modules/tailwi
+ndcss/dist/chunk-O3SHL
+FNR.mjs:3:1377)
+    at Ce (file:///J:/
+g2g/node_modules/tailw
+indcss/dist/chunk-O3SH
+LFNR.mjs:21:172)
+    at Gi (file:///J:/
+g2g/node_modules/tailw
+indcss/dist/chunk-O3SH
+LFNR.mjs:38:294)
+    at async ao (file:
+///J:/g2g/node_modules
+/tailwindcss/dist/chun
+k-O3SHLFNR.mjs:38:631)
+    at async vf (file:
+///J:/g2g/node_modules
+/tailwindcss/dist/chun
+k-O3SHLFNR.mjs:38:1406
+)
+    at async uu (file:
+///J:/g2g/node_modules
+/@tailwindcss/node/dis
+t/index.mjs:10:3458)[
+39m
